@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private BluetoothAdapter bluetoothAdapter;
 
     private LocationRequest locationRequest;
-    private ArrayList<String> dispositivosEncontrados = new ArrayList<>();
+    private ArrayList<Dispositivo> dispositivosEncontrados = new ArrayList<>();
 
     private DispositivoDao dispositivoDao;
     private Thread buscarDispositivosThread;
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         dispositivosEncontrados.addAll(dispositivoDao.getAll());
 
-        ArrayAdapter<String> itemAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, dispositivosEncontrados);
+        DispositivoAdapter itemAdapter = new DispositivoAdapter(this, R.layout.item_dispositivo, dispositivosEncontrados);
         lv.setAdapter(itemAdapter);
 
         solicitarAtivacaoBluetooth();
@@ -118,23 +118,25 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     if (device.getName() != null) {
+
                         Log.i(TAG, device.getName());
-                        if (!dispositivosEncontrados.contains(device.getName())) {
-                            Dispositivo dispositivo = new Dispositivo();
-                            dispositivo.nome = device.getName();
+                        Dispositivo dispositivo = new Dispositivo();
+                        dispositivo.setNome(device.getName());
+                        dispositivo.setEndereço(device.getAddress());
+
+                        if (!dispositivosEncontrados.contains(dispositivo)) {
+                            Log.i(TAG, "Novo dispositivo");
                             dispositivoDao.insert(dispositivo);
-                            dispositivosEncontrados.add(device.getName());
+                            dispositivosEncontrados.add(dispositivo);
+
+                            DispositivoAdapter itemAdapter = new DispositivoAdapter(getApplicationContext(), R.layout.item_dispositivo, dispositivosEncontrados);
+                            lv.setAdapter(itemAdapter);
                         }
+
                     }
                     else {
                         Log.e(TAG, "Dispositivo encontrado não possui nome");
                     }
-                }
-
-                if (dispositivosEncontrados.size() != 0)
-                {
-                    ArrayAdapter<String> itemAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, dispositivosEncontrados);
-                    lv.setAdapter(itemAdapter);
                 }
             }
         };
