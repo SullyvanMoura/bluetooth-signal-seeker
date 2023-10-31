@@ -11,8 +11,8 @@ import java.util.List;
 @Dao
 public interface DispositivoDao {
 
-    @Query("SELECT nome FROM dispositivos ORDER BY nome ASC")
-    List<String> getAll();
+    @Query("SELECT * FROM dispositivos ORDER BY nome ASC")
+    List<Dispositivo> getAll();
 
     @Query("SELECT * FROM dispositivos WHERE nome IN (:dispositivoIds)")
     List<Dispositivo> loadAllByIds(String[] dispositivoIds);
