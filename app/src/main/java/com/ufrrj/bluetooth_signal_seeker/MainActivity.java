@@ -35,6 +35,9 @@ import androidx.core.content.ContextCompat;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import com.ufrrj.bluetooth_signal_seeker.Adapters.DispositivoAdapter;
 import com.ufrrj.bluetooth_signal_seeker.Data.Dispositivo;
@@ -75,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         dispositivoDao = instance.getDispositivoDao();
 
         dispositivosEncontrados.addAll(dispositivoDao.getAll());
+        Collections.sort(dispositivosEncontrados, Collections.reverseOrder());
 
         DispositivoAdapter itemAdapter = new DispositivoAdapter(this, R.layout.item_dispositivo, dispositivosEncontrados);
         lv.setAdapter(itemAdapter);
@@ -129,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                         if (!dispositivosEncontrados.contains(dispositivo)) {
                             Log.i(TAG, "Novo dispositivo");
                             dispositivoDao.insert(dispositivo);
-                            dispositivosEncontrados.add(dispositivo);
+                            dispositivosEncontrados.add(0, dispositivo);
 
                             DispositivoAdapter itemAdapter = new DispositivoAdapter(getApplicationContext(), R.layout.item_dispositivo, dispositivosEncontrados);
                             lv.setAdapter(itemAdapter);

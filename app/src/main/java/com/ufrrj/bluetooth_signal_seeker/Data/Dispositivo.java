@@ -7,9 +7,10 @@ import androidx.room.PrimaryKey;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Locale;
 
 @Entity(tableName = "dispositivos")
-public class Dispositivo {
+public class Dispositivo implements Comparable<Dispositivo> {
 
     @PrimaryKey
     @NonNull
@@ -62,6 +63,18 @@ public class Dispositivo {
         }
         else {
             return false;
+        }
+    }
+
+    @Override
+    public int compareTo(Dispositivo outroDispositivo) {
+
+        LocalDateTime dataDoOutro = outroDispositivo.getData();
+        if (dataDoOutro.isAfter(this.getData())) {
+            return -1;
+        }
+        else {
+            return 1;
         }
     }
 }
