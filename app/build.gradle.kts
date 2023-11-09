@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.ufrrj.bluetooth_signal_seeker"
-        minSdk = 16
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"

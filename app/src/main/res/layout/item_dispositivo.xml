@@ -33,5 +33,17 @@
         app:layout_constraintTop_toTopOf="@+id/textViewNome"
         app:layout_constraintVertical_bias="0.743" />
 
+    <TextView
+        android:id="@+id/textViewData"
+        android:layout_width="240dp"
+        android:layout_height="24dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewNome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewEndereco"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.764" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

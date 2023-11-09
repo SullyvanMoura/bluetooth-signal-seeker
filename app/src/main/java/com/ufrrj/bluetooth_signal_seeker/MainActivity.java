@@ -13,7 +13,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -34,11 +33,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
-import Data.Dispositivo;
-import Data.DispositivoDao;
-import Data.DispositivoDatabase;
+import com.ufrrj.bluetooth_signal_seeker.Adapters.DispositivoAdapter;
+import com.ufrrj.bluetooth_signal_seeker.Data.Dispositivo;
+import com.ufrrj.bluetooth_signal_seeker.Databases.DispositivoDao;
+import com.ufrrj.bluetooth_signal_seeker.Databases.DispositivoDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -74,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         dispositivoDao = instance.getDispositivoDao();
 
         dispositivosEncontrados.addAll(dispositivoDao.getAll());
+        Collections.sort(dispositivosEncontrados, Collections.reverseOrder());
 
         DispositivoAdapter itemAdapter = new DispositivoAdapter(this, R.layout.item_dispositivo, dispositivosEncontrados);
         lv.setAdapter(itemAdapter);
@@ -123,11 +128,12 @@ public class MainActivity extends AppCompatActivity {
                         Dispositivo dispositivo = new Dispositivo();
                         dispositivo.setNome(device.getName());
                         dispositivo.setEndereço(device.getAddress());
+                        dispositivo.setData(LocalDateTime.now());
 
                         if (!dispositivosEncontrados.contains(dispositivo)) {
                             Log.i(TAG, "Novo dispositivo");
                             dispositivoDao.insert(dispositivo);
-                            dispositivosEncontrados.add(dispositivo);
+                            dispositivosEncontrados.add(0, dispositivo);
 
                             DispositivoAdapter itemAdapter = new DispositivoAdapter(getApplicationContext(), R.layout.item_dispositivo, dispositivosEncontrados);
                             lv.setAdapter(itemAdapter);
