@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/white">
 
     <TextView
         android:id="@+id/textViewNome"
@@ -13,19 +14,17 @@
         android:text="TextView"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewEndereco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         android:padding="5dp"
+        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/textViewNome"
         app:layout_constraintEnd_toEndOf="@+id/textViewNome"
         app:layout_constraintHorizontal_bias="0.0"
@@ -37,6 +36,7 @@
         android:id="@+id/textViewData"
         android:layout_width="240dp"
         android:layout_height="24dp"
+        android:drawableStart="@drawable/baseline_calendar"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/textViewNome"
         app:layout_constraintEnd_toEndOf="parent"
