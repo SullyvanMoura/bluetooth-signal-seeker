@@ -4,26 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/white"
+    android:background="#191B25"
     tools:context=".MainActivity">
-
+    <!--    android:backgroundTint="@color/black"-->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.50121653" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="411dp"
-        android:layout_height="580dp"
-        android:background="@color/cardview_light_background"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#191B25"
         android:padding="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
         app:layout_constraintVertical_bias="1.0" />
@@ -32,13 +31,17 @@
         android:id="@+id/scanBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:background="#3F51B5"
+        android:layout_marginTop="70sp"
+        android:layout_marginBottom="70sp"
+        android:backgroundTint="@drawable/botao_ativado_desativado"
         android:drawableEnd="@drawable/baseline_bluetooth_searching"
-        android:text="Iniciar"
-        android:textSize="14sp"
+        android:text="Scan"
+        android:textColor="@color/white"
+        android:textSize="12sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,26 +49,30 @@
         android:id="@+id/stopBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:background="#3F51B5"
+        android:layout_marginTop="70sp"
+        android:layout_marginBottom="70sp"
+        android:backgroundTint="@drawable/botao_ativado_desativado"
         android:drawableEnd="@drawable/baseline_bluetooth_disabled"
-        android:text="Parar"
-        android:textSize="14sp"
+        android:text="Stop"
+        android:textColor="@color/white"
+        android:textSize="12sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewDevicesNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:drawableEnd="@drawable/device_found"
-        android:text="N dispositivos encontrados"
-        android:textColor="@color/black"
+        android:layout_marginBottom="1dp"
+        android:drawableTint="@color/white"
+        android:text="Dispositivos encontrados"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:drawableEndCompat="@drawable/device_found"
         app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -76,5 +83,25 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.2" />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Bluetooth Signal Seeker"
+        android:textColor="#D6DCFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
