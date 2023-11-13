@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.ApiException;
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView lv;
     private Button scanBtn;
     private Button stopBtn;
+    private TextView textViewDevicesNumber;
     private BroadcastReceiver mbroadcastReceiver;
     private BluetoothAdapter bluetoothAdapter;
 
@@ -86,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
         solicitarAtivacaoBluetooth();
         solicitarAtivacaoLocalizacao();
 
+        textViewDevicesNumber = findViewById(R.id.textViewDevicesNumber);
+        textViewDevicesNumber.setText("N° de Dispositivos encontrados: " + dispositivosEncontrados.size());
+
         scanBtn = findViewById(R.id.scanBtn);
         stopBtn = findViewById(R.id.stopBtn);
         stopBtn.setEnabled(false);
@@ -104,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
     @Override
     protected void onResume() {
@@ -137,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
                             DispositivoAdapter itemAdapter = new DispositivoAdapter(getApplicationContext(), R.layout.item_dispositivo, dispositivosEncontrados);
                             lv.setAdapter(itemAdapter);
+                            textViewDevicesNumber.setText("N° de Dispositivos encontrados: " + dispositivosEncontrados.size());
                         }
 
                     }
@@ -252,7 +257,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private static void buscarDispositivos(Context context, Activity activity, BluetoothAdapter adapter) {
 
