@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         solicitarAtivacaoLocalizacao();
 
         textViewDevicesNumber = findViewById(R.id.textViewDevicesNumber);
-        textViewDevicesNumber.setText("N° de Dispositivos encontrados: " + dispositivosEncontrados.size());
+        textViewDevicesNumber.setText(dispositivosEncontrados.size() + (" Dispositivos encontrados"));
 
         scanBtn = findViewById(R.id.scanBtn);
         stopBtn = findViewById(R.id.stopBtn);
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
                             DispositivoAdapter itemAdapter = new DispositivoAdapter(getApplicationContext(), R.layout.item_dispositivo, dispositivosEncontrados);
                             lv.setAdapter(itemAdapter);
-                            textViewDevicesNumber.setText("N° de Dispositivos encontrados: " + dispositivosEncontrados.size());
+                            textViewDevicesNumber.setText(dispositivosEncontrados.size() + (" Dispositivos encontrados"));
                         }
 
                     }
