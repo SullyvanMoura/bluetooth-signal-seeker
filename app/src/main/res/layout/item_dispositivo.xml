@@ -23,7 +23,7 @@
         android:id="@+id/textViewEndereco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="5dp"
+        android:paddingLeft="5dp"
         android:text="TextView"
         android:textColor="#CCCCCC"
         app:layout_constraintBottom_toBottomOf="@+id/textViewNome"
@@ -35,18 +35,21 @@
 
     <TextView
         android:id="@+id/textViewData"
-        android:layout_width="240dp"
-        android:layout_height="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:drawableStart="@drawable/baseline_calendar"
         android:drawableTint="@color/white"
         android:text="TextView"
         android:textColor="#CCCCCC"
+        android:textAlignment="center"
+        android:paddingRight="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewNome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textViewEndereco"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.764" />
+        app:layout_constraintVertical_bias="0.764"
+        android:layout_gravity="center" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
