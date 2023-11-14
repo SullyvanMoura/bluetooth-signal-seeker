@@ -36,9 +36,7 @@ import androidx.core.content.ContextCompat;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 import com.ufrrj.bluetooth_signal_seeker.Adapters.DispositivoAdapter;
 import com.ufrrj.bluetooth_signal_seeker.Data.Dispositivo;
@@ -113,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        solicitarPermissões(MainActivity.this, this);
+        solicitarPermissoes(MainActivity.this, this);
 
         mbroadcastReceiver = new BroadcastReceiver() {
             @Override
@@ -187,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private static void solicitarPermissões(Context context, Activity activity) {
+    private static void solicitarPermissoes(Context context, Activity activity) {
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE_ACCESS_FINE_LOCATION);
         }
